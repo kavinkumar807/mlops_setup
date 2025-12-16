@@ -1,2 +1,4 @@
 dagshub
 dvc
+python-dotenv
+mlflow<3.0.0
