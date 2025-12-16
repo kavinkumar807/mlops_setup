@@ -10,3 +10,4 @@ dvc remote modify origin --local user "kavinkumarbaskar"
 dvc remote modify origin --local password "YOUR_TOKEN"
 git add 
 git commit -m "data-versioning-setup-completed"
+git push -u origin main
