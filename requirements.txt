@@ -9,3 +9,8 @@ seaborn
 scikit-learn
 datetime
 importlib
+feast
+sqlalchemy
+psycopg[binary]
+psycopg_pool
+pytest

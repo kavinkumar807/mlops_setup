@@ -6,6 +6,11 @@ from eda.data_analysis import AnalysisContext, NumericalUnivariateAnalysis, Cate
 from eda.missing_value_handling import MissingValueContext, DropMissingValueStrategy, FillMissingValueStrategy
 from eda.data_encoding import DataEncoding
 
+from feature_store.feature_store import FeastFeatureStore
+from feature_store.feature_repo.definitions import house, house_features
+from feature_store.exec_feature_store import ExecuteFeatureStore 
+from datetime import datetime, timedelta
+
 class HousePricePrediction:
     def __init__(self):
         self.df = None
@@ -47,9 +52,57 @@ class HousePricePrediction:
         cat_df = encode.categorical_encoding(bin_df, cat_columns)
         num_df = encode.numerical_scaling(cat_df, numerical_columns)
         return num_df
+    
+    # <h2> Feast Feature store
+    def get_feature_store(self):
+        store = ExecuteFeatureStore().get_feature_store()
+        return store
+    
+    def execute_feature_store(self, store=None): 
+        if(store is None): 
+            store = self.get_feature_store() 
+        self.get_historical_features(store) 
+        self.get_online_features(store) 
+
+    def get_historical_features(self, store=None, entity_df=None): 
+        # if(store is None): 
+        #     store = self.get_feature_store() 
+        #     store.store.apply([house, house_features]) 
+
+        # if (entity_df is None): 
+        #     entity_df = store.get_entity_dataframe(path=os.path.join(os.getcwd() + "//feature_store//data//house_target.parquet")) 
+
+        # features=[ 
+        #     "house_features:area", 
+        #     "house_features:bedrooms", 
+        #     "house_features:mainroad" 
+        # ] 
+        hist_df = ExecuteFeatureStore().get_historical_features(store, entity_df) 
+        return hist_df 
+ 
+    def get_online_features(self, store, entity_df=None): 
+        # features=[ 
+        #     "house_features:area", 
+        #     "house_features:bedrooms", 
+        #     "house_features:mainroad" 
+        # ] 
+        # if (entity_df is None): 
+        #     entity_df = store.get_entity_dataframe(path=os.path.join(os.getcwd() + "//feature_store//data//house_target.parquet")) 
+        # entity_rows = entity_df.to_dict(orient="records") 
+
+        online_df = ExecuteFeatureStore().get_online_features(store, entity_df)
+        return online_df
+
+    def materialize(self, end_date = datetime.now(), start_date=None, increment=False, store=None):
+        if(store is None):
+            store = self.get_feature_store()
+        ExecuteFeatureStore().materialize(end_date, start_date, increment, store)
+    
+
 
 if __name__ == "__main__":
     hpp = HousePricePrediction()
     hpp.load_and_inspect_data()
     processed_df = hpp.process_data()
     print(processed_df.head())
+    hpp.execute_feature_store()

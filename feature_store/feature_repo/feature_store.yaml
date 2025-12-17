@@ -1,0 +1,26 @@
+project: housing_feature_store
+provider: local
+registry:
+    registry_type: sql
+    path: ${POSTGRE_SQL_CONN_STR}/${POSTGRE_SQL_REGISTRY_DB}
+    cache_ttl_seconds: 60
+    sqlalchemy_config_kwargs:
+        echo: false
+        pool_pre_ping: true
+online_store:
+    type: postgres
+    host: ${POSTGRE_SQL_HOST}
+    port: ${POSTGRE_SQL_PORT}
+    database: ${POSTGRE_SQL_ONLINE_DB}
+    db_schema: public
+    user: ${POSTGRE_SQL_USER}
+    password: ${POSTGRE_SQL_PASSWORD}
+offline_store:
+    type: postgres
+    host: ${POSTGRE_SQL_HOST}
+    port: ${POSTGRE_SQL_PORT}
+    database: ${POSTGRE_SQL_OFFLINE_DB}
+    db_schema: public
+    user: ${POSTGRE_SQL_USER}
+    password: ${POSTGRE_SQL_PASSWORD}
+entity_key_serialization_version: 3
