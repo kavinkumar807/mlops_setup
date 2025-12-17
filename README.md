@@ -33,3 +33,16 @@ dvc pull
 MLFLOW_TRACKING_USERNAME=kavinkumarbaskar
 MLFLOW_TRACKING_PASSWORD=<Password/token>
 MLFLOW_TRACKING_URI=https://dagshub.com/kavinkumarbaskar/dagshub_basics.mlflow
+
+# new branch
+git checkout -b "branch-name"
+dvc checkout
+
+
+
+# learning
+
+## Data processing
+
+1) mkdir eda
+2) touch eda/data_ingestor.py eda/data_inspection.py

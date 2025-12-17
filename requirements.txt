@@ -2,3 +2,10 @@ dagshub
 dvc
 python-dotenv
 mlflow<3.0.0
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+datetime
+importlib
