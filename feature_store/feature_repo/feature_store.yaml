@@ -2,7 +2,7 @@ project: housing_feature_store
 provider: local
 registry:
     registry_type: sql
-    path: ${POSTGRE_SQL_REGISTRY}
+    path: ${POSTGRE_SQL_CONN_STR}/${POSTGRE_SQL_REGISTRY_DB}
     cache_ttl_seconds: 60
     sqlalchemy_config_kwargs:
         echo: false
