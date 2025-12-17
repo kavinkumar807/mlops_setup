@@ -65,3 +65,5 @@ dvc checkout
 12) feast entities list
 13) feast feature-views list
 14) feast ui
+15) testing file to set example
+16) pytest ./testing/testcases.py

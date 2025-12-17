@@ -13,3 +13,4 @@ feast
 sqlalchemy
 psycopg[binary]
 psycopg_pool
+pytest
