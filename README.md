@@ -45,4 +45,17 @@ dvc checkout
 ## Data processing
 
 1) mkdir eda
-2) touch eda/data_ingestor.py eda/data_inspection.py
+2) touch eda/data_ingestor.py eda/data_inspection.py eda/data_analysis.py eda/missing_value_handling.py eda/data_encoding.py
+3) add playground
+4) save processed data
+
+
+## Feature store
+1) feast init feature_store -t postgres
+2) add data
+3) add playground
+4) run postgres in docker
+5) created db
+6) add everthing in .env and update the feast.yaml
+7) split data and add to postgres
+8) create parquet files and add to dvc
