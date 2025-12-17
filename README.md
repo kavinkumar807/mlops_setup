@@ -59,3 +59,9 @@ dvc checkout
 6) add everthing in .env and update the feast.yaml
 7) split data and add to postgres
 8) create parquet files and add to dvc
+9) add definitions
+10) move to root and execute export $(cat .env | xargs) and verify echo $POSTGRE_SQL_PORT
+11) cd feature_repo and feast apply
+12) feast entities list
+13) feast feature-views list
+14) feast ui
