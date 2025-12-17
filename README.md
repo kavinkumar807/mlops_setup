@@ -67,3 +67,8 @@ dvc checkout
 14) feast ui
 15) testing file to set example
 16) pytest ./testing/testcases.py
+
+## Experiment tracking (MLFLOW)
+1) Install mlflow, psycopg2
+2) mlflow server --backend-store-uri postgresql+psycopg://postgres:****@localhost:5432/mlflow_tracking_database  --host 127.0.0.1 --port 5000
+3) try with local mlflow and switch to dagshub mlflow

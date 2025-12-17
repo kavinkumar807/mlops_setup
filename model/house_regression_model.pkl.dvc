@@ -1,0 +1,5 @@
+outs:
+- md5: 6235228d0ea755927fd97a51f189160d
+  size: 583
+  hash: md5
+  path: house_regression_model.pkl
