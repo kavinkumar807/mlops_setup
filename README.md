@@ -72,3 +72,41 @@ dvc checkout
 1) Install mlflow, psycopg2
 2) mlflow server --backend-store-uri postgresql+psycopg://postgres:****@localhost:5432/mlflow_tracking_database  --host 127.0.0.1 --port 5000
 3) try with local mlflow and switch to dagshub mlflow
+```
+import mlflow
+
+mlflow.set_tracking_uri("http://localhost:5000")
+mlflow.set_experiment("local_experiments")
+
+with mlflow.start_run():
+    mlflow.log_metric("rmse", 0.42)
+
+mlflow.set_tracking_uri("https://dagshub.com/<user>/<repo>.mlflow")
+mlflow.set_experiment("dagshub_experiments")
+
+with mlflow.start_run():
+    mlflow.log_metric("rmse", 0.42)
+
+```
+
+## Model Serving
+1) install bentoml and torch transformers # additional dependencies for local run
+2) export BENTOML_HOME=./bentoml_store
+3) create the service file and playground
+4) bentoml models list
+5) go to serving folder bentoml serve service:HouseService
+6) bentoml build -f serving/bentofile.yaml
+    * Deploy to BentoCloud:
+        $ bentoml deploy house_service:fja2avg3okuqwbwn -n ${DEPLOYMENT_NAME}
+
+    * Update an existing deployment on BentoCloud:
+        $ bentoml deployment update --bento house_service:fja2avg3okuqwbwn ${DEPLOYMENT_NAME}
+
+    * Containerize your Bento with `bentoml containerize`:
+        $ bentoml containerize house_service:fja2avg3okuqwbwn 
+
+    * Push to BentoCloud with `bentoml push`:
+        $ bentoml push house_service:fja2avg3okuqwbwn 
+7) bentoml list
+8) bentoml containerize house_service:fja2avg3okuqwbwn 
+9) docker run --rm -p 3000:3000 house_service:fja2avg3okuqwbwn

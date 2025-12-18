@@ -1,0 +1,5 @@
+outs:
+- md5: e6bf2c349354eb47623f5eb8370f653f
+  size: 114
+  hash: md5
+  path: feedback.csv

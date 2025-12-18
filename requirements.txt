@@ -16,3 +16,6 @@ psycopg_pool
 pytest
 mlflow
 psycopg2-binary
+bentoml
+torch 
+transformers
