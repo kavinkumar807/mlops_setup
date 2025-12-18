@@ -111,7 +111,20 @@ with mlflow.start_run():
 8) bentoml containerize house_service:fja2avg3okuqwbwn 
 9) docker run --rm -p 3000:3000 house_service:fja2avg3okuqwbwn
 
-# Model Monitoring
-Add monitoring files
-evidently ui --workspace "House Price Monitoring Workspace"
+## Model Monitoring
+1) Add monitoring files
+2) evidently ui --workspace "House Price Monitoring Workspace"
+
+## CI/CD
+git remote add origin-git https://github.com/kavinkumar807/mlops_setup.git
+git remote set-url origin-git https://USERNAME:TOKEN@github.com/kavinkumar807/mlops_setup.git
+git remote -v   
+git push -u origin-git main
+add deepchecks
+Deepchecks is an open-source Python tool used in machine learning to validate and test datasets, models, and entire ML workflows so you can trust them before and after deployment.
+Deepchecks runs checks on your datasets to find issues such as:
+missing values, inconsistent schemas, duplicates and anomalies
+distribution mismatches between train/test or reference vs production data
+This helps catch data quality issues before they affect training or predictions
+Teach about github actions and self hosted runners
 
