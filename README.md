@@ -126,4 +126,5 @@ Deepchecks runs checks on your datasets to find issues such as:
 missing values, inconsistent schemas, duplicates and anomalies
 distribution mismatches between train/test or reference vs production data
 This helps catch data quality issues before they affect training or predictions
+Teach about github actions and self hosted runners
 
