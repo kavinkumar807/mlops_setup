@@ -20,3 +20,4 @@ bentoml
 torch 
 transformers
 evidently
+deepchecks
