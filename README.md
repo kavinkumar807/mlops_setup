@@ -110,3 +110,8 @@ with mlflow.start_run():
 7) bentoml list
 8) bentoml containerize house_service:fja2avg3okuqwbwn 
 9) docker run --rm -p 3000:3000 house_service:fja2avg3okuqwbwn
+
+# Model Monitoring
+Add monitoring files
+evidently ui --workspace "House Price Monitoring Workspace"
+
